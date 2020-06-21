@@ -1,0 +1,32 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+     <!-- <img src="assets/img/choco-logo.png" id="icon" alt="User Icon" /> -->
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="login_form_group" (ngSubmit)="posted_data(login_form_group);">
+
+      <input type="text" class="fadeIn second"  formControlName='email'    placeholder="E-Mail">
+      <div *ngIf="isFormSubmitted     && login_form_group.controls.email.errors" class="error">
+        <div *ngIf="isFormSubmitted   && login_form_group.controls.email.errors.required">E-mail required</div>
+        <div *ngIf="isFormSubmitted   && login_form_group.controls.email.errors.email">Put valid E-mail</div>
+       </div>
+
+      <input type="text" class="fadeIn third"   formControlName='password' placeholder="Password">
+      <div *ngIf="isFormSubmitted     && login_form_group.controls.password.errors" class="error">
+       <div *ngIf="isFormSubmitted    && login_form_group.controls.password.errors.required">Password required</div>
+      </div>
+      
+      <div [ngClass]="'clearfix'">
+        <span [ngClass]="'text-danger'"  *ngIf="error_msg"> {{error_msg}} </span>
+      </div>
+
+      <button type='submit' class='btn btn-md btn-info login-btn' [disabled]="!login_form_group.valid"> Login </button>
+      <button type='button' class='btn btn-md btn-info login-btn' (click)="resetForm();" > Reset </button>
+    </form>
+  </div>
+</div>
