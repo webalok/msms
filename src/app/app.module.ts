@@ -10,9 +10,6 @@ import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component';
 
 import { ByHeaderComponent } from './backyard/by-header/by-header.component';
-import { ByFooterComponent } from './backyard/by-footer/by-footer.component';
-import { BySidebarComponent } from './backyard/by-sidebar/by-sidebar.component';
-import { ByContentComponent } from './backyard/by-content/by-content.component';
 import { FyHeaderComponent } from './frontyard/fy-header/fy-header.component';
 import { FySidebarComponent } from './frontyard/fy-sidebar/fy-sidebar.component';
 import { FyFooterComponent } from './frontyard/fy-footer/fy-footer.component';
@@ -28,9 +25,6 @@ import { AdminLoginService } from './admin-login.service';
   declarations: [
     AppComponent,
     ByHeaderComponent,
-    ByFooterComponent,
-    BySidebarComponent,
-    ByContentComponent,
     FyHeaderComponent,
     FySidebarComponent,
     FyFooterComponent,
