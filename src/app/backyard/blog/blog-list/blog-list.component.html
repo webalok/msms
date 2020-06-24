@@ -1,1 +1,18 @@
-<p>blog-list works!</p>
+<div class="container">     
+ <table class="table table-bordered">
+   <thead>
+     <tr>
+       <th>Id</th>
+       <th>Blog Title</th>
+       <th>Meta Title</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let user of blog_array">
+       <td>{{user.ID}}</td>
+       <td>{{user.title}}</td>
+       <td>{{user.meta_title}}</td>
+     </tr>
+   </tbody>
+ </table>
+</div>

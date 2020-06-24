@@ -12,5 +12,7 @@ export class AdminLoginService {
   check_user_authuntication(data) {
    return this.http.post<any>(this.API_URL+'check_user_authuntication', data);
   }
-
+  get_blog_list() {
+    return this.http.get<any>(this.API_URL+'get_blog_list');
+   }
 }
