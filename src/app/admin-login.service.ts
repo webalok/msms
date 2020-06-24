@@ -13,6 +13,10 @@ export class AdminLoginService {
    return this.http.post<any>(this.API_URL+'check_user_authuntication', data);
   }
   get_blog_list() {
-    return this.http.get<any>(this.API_URL+'get_blog_list');
-   }
+   return this.http.get<any>(this.API_URL+'get_blog_list');
+  }
+  delete_blog(id: number) {
+   return this.http.delete<any>(this.API_URL+'delete_blog/'+ id);
+ } 
 }
+ 

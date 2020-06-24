@@ -5,13 +5,18 @@
        <th>Id</th>
        <th>Blog Title</th>
        <th>Meta Title</th>
+       <th>Action</th>
      </tr>
    </thead>
    <tbody>
-     <tr *ngFor="let user of blog_array">
-       <td>{{user.ID}}</td>
-       <td>{{user.title}}</td>
-       <td>{{user.meta_title}}</td>
+     <tr *ngFor="let blog of blog_array">
+       <td>{{blog.ID}}</td>
+       <td>{{blog.title}}</td>
+       <td>{{blog.meta_title}}</td>
+       <td>
+        <button class="btn btn-sm btn-light" (click)="delete_blog(blog)"> Delete </button>
+        <button class="btn btn-sm btn-light" (click)="edit_blog(blog)" style="margin-left: 10px;"> Edit</button>
+      </td>
      </tr>
    </tbody>
  </table>
