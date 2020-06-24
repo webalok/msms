@@ -4,6 +4,8 @@ import { ByLoginComponent } from './backyard/by-login/by-login.component';
 import { ByDashboardComponent } from './backyard/by-dashboard/by-dashboard.component';
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component'
+import { BlogListComponent } from './backyard/blog/blog-list/blog-list.component';
+import { BlogAddComponent } from './backyard/blog/blog-add/blog-add.component';
 
 const routes: Routes = [
  {
@@ -29,6 +31,14 @@ const routes: Routes = [
        path: 'home',
        component: ByDashboardComponent 
      },
+     {
+      path: 'blog-list',
+      component: BlogListComponent 
+    },
+    {
+      path: 'blog-add',
+      component: BlogAddComponent 
+    },    
    ]
  },
  { path: '**', redirectTo: '' }

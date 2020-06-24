@@ -20,6 +20,8 @@ import { ByDashboardComponent } from './backyard/by-dashboard/by-dashboard.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminLoginService } from './admin-login.service';
+import { BlogListComponent } from './backyard/blog/blog-list/blog-list.component';
+import { BlogAddComponent } from './backyard/blog/blog-add/blog-add.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AdminLoginService } from './admin-login.service';
     ByLoginComponent,
     ByDashboardComponent,
     HomeLayoutComponent,
-    LoginLayoutComponent
+    LoginLayoutComponent,
+    BlogListComponent,
+    BlogAddComponent
   ],
   imports: [
     BrowserModule,

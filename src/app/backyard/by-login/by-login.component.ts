@@ -33,12 +33,8 @@ export class ByLoginComponent implements OnInit {
    this.set_user_email    = login_form_group.controls.email.value;
    this.set_user_password = login_form_group.controls.password.value;
    
-   if(this.set_user_email=='peter@gmail.com'){ 
-    this.router.navigate(['/store/home']);
-   }
-
-   //this.http_client.check_user_authuntication(this.login_form_group.value).subscribe( data => { if(data.status=='success'){ sessionStorage.setItem('IS_SESSION','YES'); this.router.navigate(['store-home']); } else{ this.error_msg = data.message; } });
-   //this.isFormSubmitted   = false;
+   this.http_client.check_user_authuntication(this.login_form_group.value).subscribe( data => { if(data.status=='success'){ this.router.navigate(['/store/home']); } else{ this.error_msg = data.message; } });
+   this.isFormSubmitted   = false;
   }
 
   resetForm(){
