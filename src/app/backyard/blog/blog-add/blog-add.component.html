@@ -1,48 +1,42 @@
-<div class="container pad-top-bottom-20">
+<div class="container pad-top-bottom-20">   
  <div class="row">
- <div class="col-md-9">    
-
+ <div class="col-md-12"> 
+  <form [formGroup]="msms_form_group" (ngSubmit)="submitted_data(msms_form_group);">  
   <div class="form-row" style="margin-bottom: 0.5rem;">							
    <div class="col">
     <label>Blog title</label>
-    <input type="text" class="form-control" name="title"  value="" maxlength="100" autocomplete="off">
-   </div>
-   <div class="col">
-    <label>Blog url</label>
-    <input type="text" class="form-control" name="slug" value=""  maxlength="100"  autocomplete="off">
+    <input type="text" class="form-control" formControlName="title"  maxlength="100" autocomplete="off">
+    </div>
+    <div class="col">
+     <label>Blog url</label>
+     <input type="text" class="form-control" formControlName="slug" maxlength="100"  autocomplete="off">  
    </div>             
   </div>           
   <div class="form-row" style="margin-bottom: 0.5rem;">
    <div class="col">
     <label>Blog description</label>
-    <textarea rows="6" name='description' class="form-control"></textarea>
+    <textarea rows="6" formControlName='description' class="form-control"></textarea>
    </div>
   </div>
   <div class="form-row" style="margin-bottom: 0.5rem;">							
    <div class="col">
     <label>Meta title</label>
-    <input type="text" class="form-control" name="meta_title"  value="" maxlength="100" autocomplete="off">
+    <input type="text" class="form-control" formControlName="meta_title" maxlength="100" autocomplete="off">
    </div>         
   </div>           
   <div class="form-row" style="margin-bottom: 0.5rem;">
    <div class="col">
     <label>Meta description</label>
-    <textarea rows="2" name='meta_description' class="form-control"></textarea>
+    <textarea rows="2" formControlName='meta_description' class="form-control"></textarea>
    </div>
+  </div>
+  <div class="form-group">
+   <button type='submit' class='btn btn-md btn-info login-btn' [disabled]="!msms_form_group.valid"> Login </button>
+   <button type='button' class='btn btn-md btn-info login-btn' (click)="resetForm();" > Reset </button> 
+  </div>
+ </form>
+ </div> 
+
 </div>
 
- </div> <!--- End col-md-9 --->
- <div class="col-md-3">
-   <div class="avatar-upload for-category">             
-    <div class="avatar-edit">
-     <input type="file" name="image[]" accept="image/*" >
-    </div>
-   </div>
- </div>
- <div class="col-md-12">
-  <div class="form-group">
-   <button type="button" class="btn btn-dark">Submit</button>      
-  </div>
- </div>
-</div>
 </div>

@@ -18,5 +18,8 @@ export class AdminLoginService {
   delete_blog(id: number) {
    return this.http.delete<any>(this.API_URL+'delete_blog/'+ id);
  } 
+ blog_add(data) {
+  return this.http.post<any>(this.API_URL+'blog_add', data);
+ } 
 }
  
