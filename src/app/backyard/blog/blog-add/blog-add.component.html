@@ -31,10 +31,16 @@
    </div>
   </div>
   <div class="form-group">
+   <label for="file">File</label>
+    <input formControlName="file" id="file"  type="file" multiple="" (change)="onFileChange($event)">
+   </div>
+   <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"><br/>
+
+  <div class="form-group">
    <div [ngClass]="'clearfix'">
     <span [ngClass]="'text-danger'"  *ngIf="error_msg"> {{error_msg}}</span>
    </div>   
-   <button type='submit' class='btn btn-md btn-info login-btn' [disabled]="!msms_form_group.valid"> Login </button>
+   <button type='submit' class='btn btn-md btn-info login-btn' [disabled]="!msms_form_group.valid"> Add  </button>
    <button type='button' class='btn btn-md btn-info login-btn ml-3' (click)="resetForm();" > Reset </button> 
   </div>
  </form>
