@@ -42,7 +42,7 @@ export class BlogAddComponent implements OnInit {
                     fileSource: this.images
                  });
                }
-               if(event.target.files[i]){
+               if(event.target.files[i]){ 
                 reader.readAsDataURL(event.target.files[i]);
                } 
        }
