@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminLoginService } from './admin-login.service';
 import { BlogListComponent } from './backyard/blog/blog-list/blog-list.component';
 import { BlogAddComponent } from './backyard/blog/blog-add/blog-add.component';
+import { BlogEditComponent } from './backyard/blog/blog-edit/blog-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { BlogAddComponent } from './backyard/blog/blog-add/blog-add.component';
     HomeLayoutComponent,
     LoginLayoutComponent,
     BlogListComponent,
-    BlogAddComponent
+    BlogAddComponent,
+    BlogEditComponent
   ],
   imports: [
     BrowserModule,

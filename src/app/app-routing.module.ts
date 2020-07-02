@@ -6,6 +6,7 @@ import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component'
 import { BlogListComponent } from './backyard/blog/blog-list/blog-list.component';
 import { BlogAddComponent } from './backyard/blog/blog-add/blog-add.component';
+import { BlogEditComponent } from './backyard/blog/blog-edit/blog-edit.component';
 
 const routes: Routes = [
  {
@@ -38,7 +39,11 @@ const routes: Routes = [
     {
       path: 'blog-add',
       component: BlogAddComponent 
-    },    
+    },
+    {
+      path: 'blog-edit',
+      component: BlogEditComponent 
+    },        
    ]
  },
  { path: '**', redirectTo: '' }

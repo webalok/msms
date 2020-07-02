@@ -9,24 +9,22 @@ import { AdminLoginService } from 'src/app/admin-login.service';
 })
 export class BlogListComponent implements OnInit {
  
- blog_array = new Array();
+ blog_array = [];
  constructor(private http_client:AdminLoginService, private router: Router) { }
   
-
   ngOnInit(): void {
-    this.http_client.get_blog_list().subscribe( data => { this.blog_array = data.data; console.log(this.blog_array); } );
+    this.http_client.get_blog_list().subscribe( data => { if(data.data.length>0){ this.blog_array = data.data; } else { this.blog_array = []; } } );
   } 
   refresh_grid(){
-   this.http_client.get_blog_list().subscribe( data => { this.blog_array = data.data; console.log(this.blog_array); } );
+   this.http_client.get_blog_list().subscribe( data =>  { if(data.data.length>0){ this.blog_array = data.data; } else { this.blog_array = []; } } );
   }
   delete_blog(blog: any): void {
-   console.log(blog.ID);
    this.http_client.delete_blog(blog.ID).subscribe( data => { if(data.status=='success'){ this.refresh_grid(); } });
  };
 
- edit_blog(user: any): void {
-  // localStorage.removeItem("editUserId");
-  // localStorage.setItem("editUserId", user.id.toString());
-  // this.router.navigate(['edit-user']);
+ edit_blog(blog: any): void {
+  localStorage.removeItem("ID");
+  localStorage.setItem("ID", blog.ID.toString());
+  this.router.navigate(['store/blog-edit']);
  };
 }
