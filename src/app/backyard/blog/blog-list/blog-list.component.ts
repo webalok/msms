@@ -24,7 +24,7 @@ export class BlogListComponent implements OnInit {
 
  edit_blog(blog: any): void {
   localStorage.removeItem("ID");
-  localStorage.setItem("ID", blog.ID.toString());
+  localStorage.setItem("ID", blog.ID);
   this.router.navigate(['store/blog-edit']);
  };
 }

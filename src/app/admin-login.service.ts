@@ -20,6 +20,12 @@ export class AdminLoginService {
  } 
  blog_add(data) {
   return this.http.post<any>(this.API_URL+'blog_add', data);
+ }
+ get_form_data_by_id(blog_ID){
+  return this.http.get<any>(this.API_URL+'get_form_data_by_id/'+blog_ID);
+ }
+ blog_put(data) {
+  return this.http.put<any>(this.API_URL+'blog_put/'+ data.ID, data);
  } 
 }
  

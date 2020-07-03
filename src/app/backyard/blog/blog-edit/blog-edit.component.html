@@ -1,1 +1,65 @@
-<p>blog-edit works!</p>
+<div class="container pad-top-bottom-20">   
+ <div class="row">
+ <div class="col-md-12"> 
+  <form [formGroup]="msms_form_group" (ngSubmit)="submitted_data(msms_form_group);">  
+  <div class="form-row" style="margin-bottom: 0.5rem;">							
+   <div class="col">
+    <label>Blog title</label>
+     <input type="text" class="form-control" formControlName="title"  maxlength="100" autocomplete="off">
+     <div *ngIf="isFormSubmitted  && msms_form_group.controls.title.errors" class="alert-danger">
+      <div *ngIf="isFormSubmitted && msms_form_group.controls.title.errors.required">Blot title required</div>
+     </div>
+    </div>
+    <div class="col">
+     <label>Blog url</label>
+     <input type="text" class="form-control" formControlName="slug" maxlength="100"  autocomplete="off">  
+   </div>             
+  </div>            
+  <div class="form-row" style="margin-bottom: 0.5rem;">
+   <div class="col">
+    <label>Blog description</label>
+    <textarea rows="6" formControlName='description' class="form-control"></textarea>
+     <div *ngIf="isFormSubmitted  && msms_form_group.controls.description.errors" class="alert-danger">
+      <div *ngIf="isFormSubmitted && msms_form_group.controls.description.errors.required">Blot description required</div>
+     </div>
+   </div>
+  </div>
+  <div class="form-row" style="margin-bottom: 0.5rem;">							
+   <div class="col">
+    <label>Meta title</label>
+    <input type="text" class="form-control" formControlName="meta_title" maxlength="100" autocomplete="off">
+    <div *ngIf="isFormSubmitted  && msms_form_group.controls.meta_title.errors" class="alert-danger">
+     <div *ngIf="isFormSubmitted && msms_form_group.controls.meta_title.errors.required">Meta title required</div>
+    </div>   
+   </div>         
+  </div>           
+  <div class="form-row" style="margin-bottom: 0.5rem;">
+   <div class="col">
+    <label>Meta description</label>
+    <textarea rows="2" formControlName='meta_description' class="form-control"></textarea>
+    <div *ngIf="isFormSubmitted  && msms_form_group.controls.meta_description.errors" class="alert-danger">
+     <div *ngIf="isFormSubmitted && msms_form_group.controls.meta_description.errors.required">Meta description required</div>
+    </div> 
+   </div>
+  </div>
+  <!--
+  <div class="form-group">
+   <label for="file">File</label>
+    <input formControlName="file" id="file"  type="file" multiple="" (change)="onFileChange($event)">
+    <div *ngIf="isFormSubmitted  && msms_form_group.controls.file.errors" class="alert-danger">
+     <div *ngIf="isFormSubmitted && msms_form_group.controls.file.errors.required">Image upload required</div>
+    </div>
+   </div>
+
+   <img *ngFor='let url of images'  [src]="url" height="" width="20%" style="margin: 3px;"><br/>
+-->
+   <div class="form-group">
+    <div [ngClass]="'clearfix'"><span [ngClass]="'text-danger'"  *ngIf="error_msg"> {{error_msg}}</span></div>   
+    <button type='submit' class='btn btn-md btn-info login-btn' > Update Blog </button>
+    <button type='button' class='btn btn-md btn-info login-btn ml-3' (click)="resetForm();" > Reset </button> 
+   </div>
+
+ </form>
+ </div> 
+</div>
+</div>

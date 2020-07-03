@@ -47,8 +47,6 @@ if (event.target.files && event.target.files[0]){
  }
  }
 }
-
-
   submitted_data(msms_form_group:any){
    this.isFormSubmitted   = true;
    if (this.msms_form_group.invalid) {
