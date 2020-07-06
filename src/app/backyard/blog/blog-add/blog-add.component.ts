@@ -28,25 +28,33 @@ export class BlogAddComponent implements OnInit {
   });   
   }
   
-onFileChange(event) {
-console.log(event);
-if (event.target.files && event.target.files[0]){
- var filesAmount = event.target.files.length;
-  for (let i = 0; i<filesAmount; i++){
-   var reader = new FileReader();
-    reader.onload = (event:any) => {
-    console.log(event.target.result);
-    this.images.push(event.target.result); 
-    this.msms_form_group.patchValue({
-    fileSource: this.images
-    });
+ onFileChange(event) {
+  console.log(event);
+  if (event.target.files && event.target.files[0]){
+  var filesAmount = event.target.files.length;
+    for (let i = 0; i<filesAmount; i++){
+    var reader = new FileReader();
+      reader.onload = (event:any) => {
+      // console.log(event.target.result);
+      this.images.push(event.target.result); 
+      this.msms_form_group.patchValue({ fileSource: this.images });
+     console.log(this.images);
+    }
+    if(event.target.files[i]){ 
+      reader.readAsDataURL(event.target.files[i]);
+    } 
    }
-  if(event.target.files[i]){ 
-    reader.readAsDataURL(event.target.files[i]);
-  } 
+  }
  }
+
+ removeSelectedFile(index) {
+  //this.images.splice(index, 1);
+  //this.images.splice(index, 1);
+  
  }
-}
+ counter(i: number) {
+  return new Array(i);
+ }
   submitted_data(msms_form_group:any){
    this.isFormSubmitted   = true;
    if (this.msms_form_group.invalid) {
