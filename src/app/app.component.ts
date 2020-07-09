@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-blog';
+  createProduct: boolean;
+  message: string;
+
+  onCreateProduct() {
+    this.createProduct = true;
+    this.message = '';
+  }
+
+  onProductSubmit(data) {
+    this.createProduct = false;
+    this.message = data.message;
+  }
 }

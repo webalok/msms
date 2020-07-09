@@ -44,7 +44,8 @@
   </div>
 
    <div class="form-group">
-    <input formControlName="file" type="file"  (change)="onFileChange($event)">
+    <input formControlName="file" style="visibility: hidden;" *ngFor='let in of counter(4); let i = index;' type="file" id="files-{{i}}" (change)="onFileChange($event)">
+    <label *ngFor='let in of counter(4); let i = index;' for="files-{{i}}" style='background-color:white; padding: 10px; margin-right: 10px; cursor: pointer; border: 1px solid #e6e6e6;'>Choose</label>
     
     <div *ngIf="isFormSubmitted  && msms_form_group.controls.file.errors" class="alert-danger">
      <div *ngIf="isFormSubmitted && msms_form_group.controls.file.errors.required">Image upload required</div>

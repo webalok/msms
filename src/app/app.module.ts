@@ -23,6 +23,7 @@ import { AdminLoginService } from './admin-login.service';
 import { BlogListComponent } from './backyard/blog/blog-list/blog-list.component';
 import { BlogAddComponent } from './backyard/blog/blog-add/blog-add.component';
 import { BlogEditComponent } from './backyard/blog/blog-edit/blog-edit.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BlogEditComponent } from './backyard/blog/blog-edit/blog-edit.component
     LoginLayoutComponent,
     BlogListComponent,
     BlogAddComponent,
-    BlogEditComponent
+    BlogEditComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

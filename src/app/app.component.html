@@ -1,1 +1,11 @@
+
+<div class="container">
+ <h1>{{ title }}</h1>
+ <hr />
+ <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-primary">Create Product</button>
+ <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product>
+ <br /><br />
+ <div *ngIf="message" class="alert alert-success">{{message}}</div>
+</div>
+
 <router-outlet></router-outlet>
