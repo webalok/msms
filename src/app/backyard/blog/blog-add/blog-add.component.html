@@ -44,24 +44,26 @@
   </div>
 
    <div class="form-group">
-    <input formControlName="file" style="visibility: hidden;" *ngFor='let in of counter(4); let i = index;' type="file" id="files-{{i}}" (change)="onFileChange($event)">
-    <label *ngFor='let in of counter(4); let i = index;' for="files-{{i}}" style='background-color:white; padding: 10px; margin-right: 10px; cursor: pointer; border: 1px solid #e6e6e6;'>Choose</label>
-    
+    <div class="upload-btn-wrapper"> 
+     <button class="btn document-upload-btn"><i class="fas fa-file"></i> Upload a image</button>
+     <input type="file" formControlName="file" multiple accept="image/*" type="file" (change)="onDucumentChoosen($event)" />
+    </div>
+
     <div *ngIf="isFormSubmitted  && msms_form_group.controls.file.errors" class="alert-danger">
-     <div *ngIf="isFormSubmitted && msms_form_group.controls.file.errors.required">Image upload required</div>
+     <div *ngIf="isFormSubmitted && msms_form_group.controls.file.errors.required">Document upload required</div>
     </div>
    
   </div>
 
    <div class="row">
-    <div *ngFor='let url of images; let index = index;' [ngClass]="'col-md-2'">
-     <img [src]="url" [ngClass]="'img-fluid'">
-     <span class="delete-entry" style="cursor: pointer;" (click)="removeSelectedFile(index)">x</span>
+    <div *ngFor='let document_url of array_preview; let index = index;' [ngClass]="'col-md-2'">
+     <img [src]="document_url" [ngClass]="'img-fluid'">
+     <span class="delete-entry" style="cursor: pointer;" (click)="removeDocument(index)">x</span>
     </div>
    </div>
    <div class="form-group">
     <div [ngClass]="'clearfix'"><span [ngClass]="'text-danger'"  *ngIf="error_msg"> {{error_msg}}</span></div>   
-    <button type='submit' class='btn btn-md btn-info login-btn' > Add Blog </button>
+    <button type='submit' class='btn btn-md btn-info login-btn'> Add Blog </button>
     <button type='button' class='btn btn-md btn-info login-btn ml-3' (click)="resetForm();" > Reset </button> 
    </div>
 
