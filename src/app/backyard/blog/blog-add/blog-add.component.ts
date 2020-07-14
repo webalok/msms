@@ -19,27 +19,25 @@ export class BlogAddComponent implements OnInit {
 
   ngOnInit(): void {
    this.msms_form_group = this.form_builder.group({
-    title:            ['Custom develipe', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
-    slug:             ['blog-title-dummy' ,[Validators.required]],
-    description:      ['Dummy description', [Validators.required]],
-    meta_title:       ['meta title' ,[Validators.required, Validators.maxLength(60)]],
-    meta_description: ['Buy online indian made products', [Validators.required]],
-    file:             ['',[Validators.required]]
+    title:            ['How are you?',                      [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
+    slug:             ['how-are-you' ,                      [Validators.required]],
+    description:      ['Description',                       [Validators.required]],
+    meta_title:       ['Order online custom made products' ,[Validators.required, Validators.maxLength(60)]],
+    meta_description: ['Custom sewers',                     [Validators.required]],
+    file:             ['',                                  [Validators.required]]
   });   
   }
   
   onDucumentChoosen(event) {
    var documentLength = event.target.files.length;
    if(documentLength>0){
-    for (let i = 0; i<documentLength; i++){
-     this.array_hold_files.push(event.target.files[i]);
-     
+    for (let i = 0; i<documentLength; i++){     
      var calculated_size =  Math.round(event.target.files[i].size / 1024);
-     
      if(calculated_size>1024){
       console.log(event.target.files[i].name +' is greather than 1 MB');
      }
      else{
+      this.array_hold_files.push(event.target.files[i]);
        var reader = new FileReader();
        reader.onload = (event:any) => {
        this.array_preview.push(event.target.result);
