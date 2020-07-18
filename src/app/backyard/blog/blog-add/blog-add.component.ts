@@ -12,7 +12,7 @@ export class BlogAddComponent implements OnInit {
   
   isFormSubmitted   = false;
   msms_form_group   :FormGroup;
-  error_msg         = false;
+  error_msg         = '';
   array_preview     = [];
   array_hold_files  = [];
   constructor(private form_builder:FormBuilder, private http_client:AdminLoginService, private router: Router) { }
@@ -35,8 +35,10 @@ export class BlogAddComponent implements OnInit {
      var calculated_size =  Math.round(event.target.files[i].size / 1024);
      if(calculated_size>1024){
       console.log(event.target.files[i].name +' is greather than 1 MB');
+      this.error_msg = event.target.files[i].name + ' size is greater than 1 MB.';
      }
      else{
+      this.error_msg = '';
       this.array_hold_files.push(event.target.files[i]);
        var reader = new FileReader();
        reader.onload = (event:any) => {
@@ -83,7 +85,7 @@ submitted_data(msms_form_group:any){
 
 resetForm(){
   this.isFormSubmitted = false;
-  this.error_msg       = false;
+  this.error_msg       = '';
   this.msms_form_group.reset();
  }
 }
