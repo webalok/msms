@@ -14,7 +14,7 @@
      <label>Blog url</label>
      <input type="text" class="form-control" formControlName="slug" maxlength="100"  autocomplete="off">  
    </div>             
-  </div>            
+  </div>           
   <div class="form-row" style="margin-bottom: 0.5rem;">
    <div class="col">
     <label>Blog description</label>
@@ -42,20 +42,42 @@
     </div> 
    </div>
   </div>
-  <!--
-  <div class="form-group">
-   <label for="file">File</label>
-    <input formControlName="file" id="file"  type="file" multiple="" (change)="onFileChange($event)">
+
+   <div class="form-group">
+    <div class="upload-btn-wrapper"> 
+     <button class="btn document-upload-btn"><i class="fas fa-file"></i> Upload a image</button>
+     <input type="file" formControlName="file" multiple accept="image/*" type="file" (change)="onDucumentChoosen($event)" />
+    </div>
+
     <div *ngIf="isFormSubmitted  && msms_form_group.controls.file.errors" class="alert-danger">
-     <div *ngIf="isFormSubmitted && msms_form_group.controls.file.errors.required">Image upload required</div>
+     <div *ngIf="isFormSubmitted && msms_form_group.controls.file.errors.required">Document upload required</div>
+    </div>
+   
+  </div>
+
+   <div class="row">
+    <div *ngFor='let document_url of array_preview; let index = index;' [ngClass]="'col-md-2'">
+     <img [src]="document_url" [ngClass]="'img-fluid'">
+     <span class="delete-entry" style="cursor: pointer;" (click)="removeDocument(index)">x</span>
     </div>
    </div>
-
-   <img *ngFor='let url of images'  [src]="url" height="" width="20%" style="margin: 3px;"><br/>
--->
+   <div class="row">
+    <table class="table table-bordered">
+     <thead>
+       <tr>
+         <th>Images</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let blog of image_array">
+         <td>{{blog.name}}</td>
+       </tr>
+     </tbody>
+   </table>    
+   </div>
    <div class="form-group">
     <div [ngClass]="'clearfix'"><span [ngClass]="'text-danger'"  *ngIf="error_msg"> {{error_msg}}</span></div>   
-    <button type='submit' class='btn btn-md btn-info login-btn' > Update Blog </button>
+    <button type='submit' class='btn btn-md btn-info login-btn'> Update Blog </button>
     <button type='button' class='btn btn-md btn-info login-btn ml-3' (click)="resetForm();" > Reset </button> 
    </div>
 
