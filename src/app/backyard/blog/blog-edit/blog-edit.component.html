@@ -61,19 +61,11 @@
      <span class="delete-entry" style="cursor: pointer;" (click)="removeDocument(index)">x</span>
     </div>
    </div>
+
    <div class="row">
-    <table class="table table-bordered">
-     <thead>
-       <tr>
-         <th>Images</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr *ngFor="let blog of image_array">
-         <td>{{blog.name}}</td>
-       </tr>
-     </tbody>
-   </table>    
+    <div class="col-md-2" *ngFor="let blog of image_array">
+     <img src="{{folder_url}}{{blog.name}}" />
+    </div>
    </div>
    <div class="form-group">
     <div [ngClass]="'clearfix'"><span [ngClass]="'text-danger'"  *ngIf="error_msg"> {{error_msg}}</span></div>   

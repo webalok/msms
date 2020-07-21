@@ -16,10 +16,12 @@ export class BlogEditComponent implements OnInit {
  array_preview     = [];
  array_hold_files  = [];
  image_array       = []; 
+ folder_url        = '';
  constructor(private form_builder:FormBuilder, private http_client:AdminLoginService, private router: Router) { }
 
   ngOnInit() {
-    let blog_ID = localStorage.getItem("ID");
+    this.folder_url = this.http_client.API_URL+'shared/blog/thumb-nail/';
+    let blog_ID = localStorage.getItem("ID"); 
     if(!blog_ID) {
       alert("Invalid action.")
       this.router.navigate(['store/blog-list']);
@@ -68,11 +70,7 @@ export class BlogEditComponent implements OnInit {
       this.array_preview.splice(index, 1);
       this.array_preview.splice(index, 1);
     }
-   
-    counter(i: number) {
-     return new Array(i);
-    }
-   
+
    submitted_data(msms_form_group:any){
      this.isFormSubmitted   = true;
      if (this.msms_form_group.invalid) {
