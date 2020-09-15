@@ -40,60 +40,67 @@ export class BlogEditComponent implements OnInit {
    this.http_client.get_images_by_id(blog_ID).subscribe( data => { console.log(data); if(data.data.length>0){ this.image_array = data.data; } else { this.image_array = []; } });
   }
 
-     onDucumentChoosen(event) {
-      var documentLength = event.target.files.length;
-      if(documentLength>0){
-       for (let i = 0; i<documentLength; i++){     
-        var calculated_size =  Math.round(event.target.files[i].size / 1024);
-        if(calculated_size>1024){
-         console.log(event.target.files[i].name +' is greather than 1 MB');
-         this.error_msg = event.target.files[i].name + ' size is greater than 1 MB.';
-        }
-        else{
-         this.error_msg = '';
-         this.array_hold_files.push(event.target.files[i]);
-          var reader = new FileReader();
-          reader.onload = (event:any) => {
-          this.array_preview.push(event.target.result);
-         }
-         if(event.target.files[i]){ 
-          reader.readAsDataURL(event.target.files[i]);
-         } 
-        }
-       }
+  onDucumentChoosen(event) {
+   var documentLength = event.target.files.length;
+   if(documentLength>0){
+    for (let i = 0; i<documentLength; i++){     
+     var calculated_size =  Math.round(event.target.files[i].size / 1024);
+     if(calculated_size>1024){
+      console.log(event.target.files[i].name +' is greather than 1 MB');
+      this.error_msg = event.target.files[i].name + ' size is greater than 1 MB.';
+     }
+     else{
+      this.error_msg = '';
+      this.array_hold_files.push(event.target.files[i]);
+       var reader = new FileReader();
+       reader.onload = (event:any) => {
+       this.array_preview.push(event.target.result);
       }
+      if(event.target.files[i]){ 
+       reader.readAsDataURL(event.target.files[i]);
+      } 
      }
-   
-     removeDocument(index) {
-      this.array_hold_files.splice(index, 1);
-      this.array_hold_files.splice(index, 1);
-      this.array_preview.splice(index, 1);
-      this.array_preview.splice(index, 1);
     }
-
-   submitted_data(msms_form_group:any){
-     this.isFormSubmitted   = true;
-     if (this.msms_form_group.invalid) {
-      return false;
-     }
-     const formData = new FormData();
-     for (var i = 0; i < this.array_hold_files.length; i++) {
-      formData.append("file[]", this.array_hold_files[i]);
-     }
-     formData.append('title',       this.msms_form_group.get('title').value);
-     formData.append('slug',        this.msms_form_group.get('slug').value);
-     formData.append('description', this.msms_form_group.get('description').value);
-   
-     formData.append('meta_title',       this.msms_form_group.get('meta_title').value);
-     formData.append('meta_description', this.msms_form_group.get('meta_description').value);
-   
-     this.http_client.blog_put(formData).subscribe( data => { if(data.status=='success'){ this.router.navigate(['/store/blog-list']); } else{ this.error_msg = data.message; } });
-     this.isFormSubmitted   = false;
    }
+  }
    
-   resetForm(){
-     this.isFormSubmitted = false;
-     this.error_msg       = '';
-     this.msms_form_group.reset();
-    }
+  removeDocument(index) {
+   this.array_hold_files.splice(index, 1);
+   this.array_preview.splice(index, 1);
+ }
+
+ editMode_DeleteDocument(ID){
+  this.isFormSubmitted   = false;
+  console.log(ID);
+ } 
+
+ submitted_data(msms_form_group:any){
+   this.isFormSubmitted   = true;
+   if (this.msms_form_group.invalid) {
+    return false;
+   }
+   const formData = new FormData();
+   for (var i = 0; i < this.array_hold_files.length; i++) {
+    formData.append("file[]", this.array_hold_files[i]);
+   }
+   formData.append('title',       this.msms_form_group.get('title').value);
+   formData.append('slug',        this.msms_form_group.get('slug').value);
+   formData.append('description', this.msms_form_group.get('description').value);
+ 
+   formData.append('meta_title',       this.msms_form_group.get('meta_title').value);
+   formData.append('meta_description', this.msms_form_group.get('meta_description').value);
+ 
+   this.http_client.blog_put(formData).subscribe( data => { if(data.status=='success'){ this.router.navigate(['/store/blog-list']); } else{ this.error_msg = data.message; } });
+   this.isFormSubmitted   = false;
+ }
+   
+ resetForm(){
+   this.isFormSubmitted = false;
+   this.error_msg       = '';
+   this.msms_form_group.reset();
+   this.array_preview     = [];
+   this.array_hold_files  = [];
+   this.image_array       = []; 
+   this.folder_url        = '';
+  }
   }

@@ -31,7 +31,7 @@ export class BlogAddComponent implements OnInit {
   onDucumentChoosen(event) {
    var documentLength = event.target.files.length;
    if(documentLength>0){
-    for (let i = 0; i<documentLength; i++){     
+    for (let i = 0; i<documentLength; i++){
      var calculated_size =  Math.round(event.target.files[i].size / 1024);
      if(calculated_size>1024){
       console.log(event.target.files[i].name +' is greather than 1 MB');
@@ -54,8 +54,6 @@ export class BlogAddComponent implements OnInit {
 
   removeDocument(index) {
    this.array_hold_files.splice(index, 1);
-   this.array_hold_files.splice(index, 1);
-   this.array_preview.splice(index, 1);
    this.array_preview.splice(index, 1);
  }
 
@@ -84,8 +82,10 @@ submitted_data(msms_form_group:any){
 }
 
 resetForm(){
-  this.isFormSubmitted = false;
-  this.error_msg       = '';
+  this.isFormSubmitted   = false;
+  this.error_msg         = '';
   this.msms_form_group.reset();
+  this.array_preview     = [];
+  this.array_hold_files  = [];
  }
 }
