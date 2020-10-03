@@ -27,6 +27,9 @@ export class AdminLoginService {
  get_images_by_id(blog_ID) {
   return this.http.get<any>(this.API_URL+'get_images_by_id/'+blog_ID);
  }
+ delete_images_by_id(ID, IMG_NAME, IMG_TYPE, blog_ID) {
+  return this.http.get<any>(this.API_URL+'delete_images_by_id/'+ID+'/'+IMG_NAME+'/'+IMG_TYPE+'/'+blog_ID);
+ } 
  blog_put(data) {
   return this.http.put<any>(this.API_URL+'blog_put/'+ data.ID, data);
  } 

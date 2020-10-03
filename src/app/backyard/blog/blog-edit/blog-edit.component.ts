@@ -69,9 +69,10 @@ export class BlogEditComponent implements OnInit {
    this.array_preview.splice(index, 1);
  }
 
- editMode_DeleteDocument(ID){
+ editMode_DeleteDocument(ID, IMG_NAME, IMG_TYPE ){
+  let blog_ID = localStorage.getItem("ID"); 
   this.isFormSubmitted   = false;
-  console.log(ID);
+  this.http_client.delete_images_by_id(ID, IMG_NAME, IMG_TYPE, blog_ID).subscribe( data => { console.log(data); if(data.data.length>0){ this.image_array = data.data; } else { this.image_array = []; } });
  } 
 
  submitted_data(msms_form_group:any){
